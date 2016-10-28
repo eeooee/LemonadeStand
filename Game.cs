@@ -23,6 +23,7 @@ namespace LemonadeStand
            { 
                 readFile();
                 Console.WriteLine("Welcome back {0}.  You currently have ${1}, and you've made {2} total.", loadedName, wallet, profit);
+                Console.ReadLine();
                
 
         return new Player(loadedName, wallet, profit);
@@ -66,7 +67,7 @@ namespace LemonadeStand
             }
         }
 
-        public void saveFile(Player player)
+        public static void saveFile(Player player)
         {
             string fileName = player.name;
             //creates a new save file named after the player.  false operand ensures that if the file xists already that it is written over 

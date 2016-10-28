@@ -24,15 +24,21 @@ namespace LemonadeStand
             getTemperature();
             Console.WriteLine("Today, it's supposed to be {0} and {1}.", weatherMessage, temperatureMessage);
         }
-         
+
         public void RealWeather()
         {
             if (random.NextDouble() < .6)
             {
-                weatherMultiplierToggle();
-              //  Console.WriteLine("Seems like the forecaster was right!  It's {0} and {1}.", weatherMessage, temperatureMessage);
+                weatherOn();
+                //  Console.WriteLine("Seems like the forecaster was right!  It's {0} and {1}.", weatherMessage, temperatureMessage);
+            }
+            else
+            {
+                weatherOff();
+
             }
         }
+
         private void GetWeather()
         {
             int weatherPick = weatherOptionRange();
@@ -117,17 +123,19 @@ namespace LemonadeStand
             }
         }
 
-        private void weatherMultiplierToggle()
+        private void weatherOn()
         {
-            if (!this.weatherActive)
-            {
-                this.weatherActive = true;
-            }
-            else {
-                this.weatherActive = false;
-                weatherMessage = "partly sunny";
-                temperatureMessage = "balmy";
-            }
+            this.weatherActive = true;
+
+        }
+        private void weatherOff()
+        {
+
+            this.weatherActive = false;
+            weatherMessage = "partly sunny";
+            temperatureMessage = "balmy";
+            temperatureMultiplier = 1;
+            weatherMultiplier = 1;
         }
     }
-}
+    }

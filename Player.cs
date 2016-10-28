@@ -23,10 +23,12 @@ namespace LemonadeStand
         int numberOfCustomers = 20;
         int numInput;
         int cupsSold;
+        public int visitors;
         public int days = 1;
         double runningProfit;
         string randomName;
         string input = " ";
+        public string taste = " ";
 
         public Player()
         {
@@ -68,7 +70,8 @@ namespace LemonadeStand
             while (!input.Contains("leave"))
             {
                 pantry.pickItem(input, this);
-                Display.ClearLines(8, 15);
+                Display.UpdateMoney(this);
+                Display.ClearLines(15, 13);
                 Console.WriteLine("   0: Lemons \t 1: Sugar \t 2: Ice \t 3: Water");
                // Display.ClearLines(7, 15);
                 input = Console.ReadLine();
@@ -95,19 +98,33 @@ namespace LemonadeStand
         }
 
         public void setPrice()
-        {
-            Console.WriteLine("\tHow much would you like to sell your lemonade for?  ");
-            Console.WriteLine("\tConsider your expenses so that you can make a profit.", expenses);
+        
+
+{
+            Console.WriteLine("\n   How much would you like to sell your lemonade for?");
+            Console.WriteLine("   Consider your expenses so that you can make a profit.");
+            Console.WriteLine("\t\tEach cup costs {0} to make.", expenses);
+            try { 
             input = Console.ReadLine();
             drinkCost = Double.Parse(input);
+            }
+            catch(Exception e)
+            {
+                Display.ClearLines(11, 10);
+                setPrice();
+            }
+            Display.ClearLines(9, 10);
         }
         public void nightlyOverview()
         {
-            profit = (cupsSold* drinkCost) - (expenses * pantry.cupsMade);
-            runningProfit = profit + runningProfit;
-            Console.WriteLine("Today you sold {0} cups of lemonade for ${1} each for a total of ${2}.", cupsSold, drinkCost, cupsSold*drinkCost);
-            Console.WriteLine("Each cup cost you {0} to make.", expenses);
-            Console.WriteLine("You made ${0} in profit today!  You've made ${1} since opening the lemonade stand.  You now have ${2}.", profit,runningProfit, money);
+            Console.WriteLine("\n\t\t\t{0}!!", name);
+            Console.WriteLine("\t{0} neighbors visited your stand today.", visitors);
+            Console.WriteLine("\n\t{0}\n",taste);
+            Console.WriteLine("\tYou sold {0} cups of lemonade for {1:C} each.", pantry.cupsLemonade, drinkCost);
+            Console.WriteLine("\tEach cup cost you {0:C} to make.", expenses);
+            Console.WriteLine("\n\tYou made {0:C} in profit today! \n\tYou've made ${1} since opening the lemonade stand.\n\n\t\t\tYou now have ${2}.", profit,runningProfit, money);
+            Console.WriteLine("");
+            Console.WriteLine("\n\tHit return for another day.  Type save to save.");
         }
 
         public void morningReview()
@@ -127,6 +144,14 @@ namespace LemonadeStand
 
 
         }
+
+        public void getProfit()
+        {
+
+            profit = (cupsSold * drinkCost) - (expenses * pantry.cupsMade);
+            runningProfit = profit + runningProfit;
+        }
+
         public void setExpenses(double costPerCup)
         {
             expenses = costPerCup;
@@ -151,6 +176,15 @@ namespace LemonadeStand
         public void addDay()
         {
             days++;
+        }
+
+        public void addVisitor(bool reset)
+        {
+            if (reset)
+            {
+                visitors = 0;
+            }
+            visitors++;
         }
     }
 }

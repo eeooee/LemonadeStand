@@ -12,11 +12,12 @@ namespace LemonadeStand
 
         Weather weather = new Weather();
         Display display = new Display();
+        string input;
         public Day(Player player, int days)
         {
             for(int i = 1; i<=days; i++) {
-
-
+                //reset the visitor count each day 
+                player.addVisitor(true);
                 weather.Forecast();
 
                 display.newDayScreen(player, weather);
@@ -28,12 +29,19 @@ namespace LemonadeStand
                 weather.RealWeather();
                 display.Prepare(player, weather);
                 player.makeLemonade();
-                player.setPrice();
                 display.SellLemonade(player, weather);
-            VisitsStand(player.customers, player, weather);
+                player.setPrice();
+
+               VisitsStand(player.customers, player, weather);
+                player.getProfit();
+                display.nightScreen(player, weather);
             player.nightlyOverview();
                 player.addDay();
-                Console.ReadLine();
+               input = Console.ReadLine();
+                if (input.Contains("save")){
+                    Game.saveFile(player);
+                   
+                }
             }
 
         }
@@ -51,7 +59,7 @@ namespace LemonadeStand
                 if (player.cups() > 0)
                 {
                     //weather and cost of drink determine whether or not buy will purchase 
-                    if (list[i].BuyDrink(player.getCost(), weatherMultiplier))
+                    if (list[i].BuyDrink(player.getCost(), weatherMultiplier, player.pantry.lemonade.tasteMultiplier, weather.temperatureMultiplier, player))
                     {
                         player.soldDrink();
                     }
@@ -59,11 +67,15 @@ namespace LemonadeStand
                 }
                 else
                 {
-                    Console.WriteLine("You've run out of lemonade!  Time to go home.");
+                    Console.WriteLine("\n       You've run out of lemonade!  Time to go home.");
                     break;
                 }
+
             }
+            Console.ReadLine();
         }
+
+        
 
     }
 }

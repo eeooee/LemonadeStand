@@ -30,6 +30,7 @@ namespace LemonadeStand
         string input;
         int selection;
         public double costs;
+       public Lemonade lemonade = new Lemonade();
 
         public Inventory()
         {
@@ -38,31 +39,7 @@ namespace LemonadeStand
             iceCubes = 100;
             waterLiters = 2;
         }
-
-        //returns the cost per cup 
-        public void useIngredients(Player player, int liters, int sugarCups, int usedLemons, int cubesIce)
-        {
-            waterLiters = waterLiters - liters;
-            cupsSugar = cupsSugar - sugarCups;
-            lemons = lemons - usedLemons;
-            iceCubes = iceCubes - cubesIce;
-            cupsLemonade = liters * cupsPerLiter;
-            cupsMade = cupsLemonade;
-            costs = determineCost(cupsLemonade, sugarCups, usedLemons, cubesIce);
-            Display.ClearLines(18, 11);
-            Console.WriteLine("  You've made {0} cups of lemonade!", cupsLemonade);
-            Console.WriteLine("  Your lemonade costs ${0} per glass to make!\n", costs);
-            player.setExpenses(costs);
-        }
-
-        public double determineCost(int cups, int sugarCups, int usedLemons, int iceCubesUsed)
-        {
-            double profit = ((sugarCups * sugarPrice) + (usedLemons * lemonPrice) + (iceCubesUsed * (icePrice / 10)));
-            profit = profit / cups;
-            return Math.Round(profit, 2);
-
-        }
-
+        
         private void buyLemons(int quantity, Player player)
         {
             lemons = lemons + quantity;
@@ -142,9 +119,9 @@ namespace LemonadeStand
             catch (Exception e)
             {
                 Console.WriteLine("\tYou entered {0}.  Please try again", input);
-                HowMany(player, price);
+               return HowMany(player, price);
             }
-            return numInput;
+            
         }
 
         private void checkQuantities(int inPantry, int requested)
@@ -160,23 +137,24 @@ namespace LemonadeStand
         {
             Console.WriteLine("\tHow many {0} would you like?", message);
             int numInput;
-            input = Console.ReadLine();
             try
             {
+                input = Console.ReadLine();
                 numInput = int.Parse(input);
                 checkQuantities(inPantry, numInput);
                 return numInput;
             }
             catch (Exception e)
             {
-                PickQuantity(inPantry, message);
-                return 0;
+                //if for some reason this doesn't work, you just end up using one
+                return PickQuantity(inPantry, message);
+
             }
         }
 
         public void PickRecipe(Player player)
         {
-            useIngredients(player,
+            lemonade.useIngredients(player,
             PickQuantity(waterLiters, "liters of water"),
             PickQuantity(cupsSugar, "cups of sugar"),
             PickQuantity(lemons, "lemons"),

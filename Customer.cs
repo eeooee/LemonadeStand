@@ -48,24 +48,41 @@ namespace LemonadeStand
             return this.maxPayment;
         }
 
-        public bool BuyDrink(double price, double chanceMultiplier)
+        public bool BuyDrink(double price, double weatherMultiplier, double lemonadeTaste, double temperatureMultiplier, Player player)
         {
-            if (chanceToBuy(this, chanceMultiplier)) { 
-            if (price <= this.maxPayment)
+            //if this returns true, then they at least visist the lemonade stand. 
+            if (chanceToBuy(this, weatherMultiplier)) {
+                player.addVisitor(false);
+                return checkChance(price, lemonadeTaste, temperatureMultiplier, player);
+            }
+            else
             {
-                Console.WriteLine("{0} has bought a glass of lemonade for ${1}", this.name, price);
+                return false;
+            }
+        }
+
+        private bool checkChance(double price, double lemonadeTaste, double temperatureMultiplier, Player player  )
+        {
+            double chance = random.NextDouble();
+            if(chance < lemonadeTaste) { 
+            //temperature controls how much people are willing to pay
+            if (price <= (this.maxPayment*temperatureMultiplier))
+            {
+                Console.WriteLine("\t{0} has bought a glass for ${1}", this.name, price);
                 cupsBought++;
-                    return true;
+                return true;
             }
             else
             {
-                Console.WriteLine("{0} did not have enough money for Lemonade today.  Maybe ${1} is too much?", this.name, price);
+                Console.WriteLine("\t{0} did not have enough money today.\nMaybe ${1} is too much?", this.name, price);
                 cupsSkipped++;
-                    return false;
+                return false;
             }
             }
             else
             {
+                Console.WriteLine("\t{0} didn't find your lemonade appetizing today.\nTry tweaking the recipe!", this.name);
+                cupsSkipped++;
                 return false;
             }
         }

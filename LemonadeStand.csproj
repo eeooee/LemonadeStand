@@ -60,6 +60,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Shop.cs" />
     <Compile Include="Store.cs" />
     <Compile Include="Weather.cs" />
   </ItemGroup>
