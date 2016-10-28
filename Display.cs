@@ -124,7 +124,7 @@ namespace LemonadeStand
             Console.Write("\t{0}.".PadRight(20), player.name);
             Console.WriteLine("wallet:${0}\tprofit:${1}".PadLeft(15), player.money, player.profit);
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
-            Console.WriteLine("║                        LEMONADE                          ║");
+            Console.WriteLine("║                    MAKE SOME LEMONADE                    ║");
             Console.WriteLine("╟──────────────────────────────────────────────────────────╢");
             Console.Write("║"+helper2.PadRight(58));
             Console.WriteLine("║");
@@ -136,6 +136,38 @@ namespace LemonadeStand
 
         }   
 
+
+        public void SellLemonade(Player player, Weather weather)
+        {
+
+
+            string helper = "║              Outside, it's " + weather.weatherMessage + " and " + weather.temperatureMessage + ".";
+            string helper2 = " ";
+            if (weather.weatherActive)
+            {
+                helper2 = "    Looks like the weatherperson was right!";
+            }
+            Console.Clear();
+            Console.SetWindowSize(61, 30);
+            Console.BufferWidth = 61;
+            Console.BufferHeight = 30;
+            Console.Title = "Lemonade Stand";
+            Console.WriteLine("                    ");
+            Console.Write("\t{0}.".PadRight(20), player.name);
+            Console.WriteLine("wallet:${0}\tprofit:${1}".PadLeft(15), player.money, player.profit);
+            Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
+            Console.WriteLine("║                    SELL SOME LEMONADE                    ║");
+            Console.WriteLine("╟──────────────────────────────────────────────────────────╢");
+            Console.Write("║" + helper2.PadRight(58));
+            Console.WriteLine("║");
+            Console.Write(helper.PadRight(59));
+            Console.WriteLine("║");
+            Console.WriteLine("║                                                          ║");
+            Console.WriteLine("╙                                                          ╜");
+            Console.SetCursorPosition(7, 11);
+
+        }
+    }
         public void endOfDay(Player player)
         {
 
@@ -203,6 +235,16 @@ namespace LemonadeStand
 
         }
 
+        //clears a certain amount of lines, then resets the cursor to a height passed to it 
+        public static void ClearLines(int lines, int height)
+        {
+
+            Console.SetCursorPosition(0, height);
+            for (int i = 0; i <lines; i++) {
+            Console.Write(new string(' ', Console.BufferWidth));
+            }
+            Console.SetCursorPosition(0, height);
+        }
 
     }
 }

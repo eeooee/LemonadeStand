@@ -17,7 +17,7 @@ namespace LemonadeStand
         double drinkCost=.45;
         double startingFunds = 2.00;
         public Inventory pantry = new Inventory();
-        static string path = @"C:\Users\eeeeee\Documents\Visual Studio 2015\Projects\LemonadeStand\randomnames.txt";
+        static string path ="randomnames.txt";
        public  List<Customer> customers = new List<Customer>();
         string[] names = File.ReadAllLines(path);
         int numberOfCustomers = 20;
@@ -67,10 +67,10 @@ namespace LemonadeStand
             input = Console.ReadLine();
             while (!input.Contains("leave"))
             {
-                Console.SetCursorPosition(3, 11);
-
                 pantry.pickItem(input, this);
+                Display.ClearLines(8, 15);
                 Console.WriteLine("   0: Lemons \t 1: Sugar \t 2: Ice \t 3: Water");
+               // Display.ClearLines(7, 15);
                 input = Console.ReadLine();
             }
         }
@@ -88,16 +88,16 @@ namespace LemonadeStand
 
         public void makeLemonade()
         {
-            Console.WriteLine("\tTo make lemonade you must break a few lemons!!  \n\tThink carefully about your recipe.");
-            Console.WriteLine("\tHow many liters of water are you going to start with?  \tRemember, each liter of water ultimately makes you 8 cups of lemonade.");
+            Console.WriteLine("\tTo make lemonade you must break a few lemons!!  \n\n\tThink carefully about your recipe.");
+            Console.WriteLine("\tRemember, each liter of water makes you 8 cups \n\tof lemonade.\n");
             pantry.PickRecipe(this);
 
         }
 
         public void setPrice()
         {
-            Console.WriteLine("How much would you like to sell your lemonade for?  ");
-            Console.WriteLine("Remember, your lemonade costs ${0} per cup.", expenses);
+            Console.WriteLine("\tHow much would you like to sell your lemonade for?  ");
+            Console.WriteLine("\tConsider your expenses so that you can make a profit.", expenses);
             input = Console.ReadLine();
             drinkCost = Double.Parse(input);
         }

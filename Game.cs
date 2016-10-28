@@ -25,7 +25,7 @@ namespace LemonadeStand
                 Console.WriteLine("Welcome back {0}.  You currently have ${1}, and you've made {2} total.", loadedName, wallet, profit);
                
 
-return new Player(loadedName, wallet, profit);
+        return new Player(loadedName, wallet, profit);
                 
             }
             else

@@ -28,8 +28,8 @@ namespace LemonadeStand
                 weather.RealWeather();
                 display.Prepare(player, weather);
                 player.makeLemonade();
-            weather.RealWeather();
-            player.setPrice();
+                player.setPrice();
+                display.SellLemonade(player, weather);
             VisitsStand(player.customers, player, weather);
             player.nightlyOverview();
                 player.addDay();
@@ -50,6 +50,7 @@ namespace LemonadeStand
                 //can't sell lemonade if you're out of lemonade
                 if (player.cups() > 0)
                 {
+                    //weather and cost of drink determine whether or not buy will purchase 
                     if (list[i].BuyDrink(player.getCost(), weatherMultiplier))
                     {
                         player.soldDrink();

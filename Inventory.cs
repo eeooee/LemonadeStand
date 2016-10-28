@@ -49,8 +49,9 @@ namespace LemonadeStand
             cupsLemonade = liters * cupsPerLiter;
             cupsMade = cupsLemonade;
             costs = determineCost(cupsLemonade, sugarCups, usedLemons, cubesIce);
-            Console.WriteLine("You've made {0} cups of lemonade!", cupsLemonade);
-            Console.WriteLine("Your lemonade costs ${0} per glass to make!", costs);
+            Display.ClearLines(18, 11);
+            Console.WriteLine("  You've made {0} cups of lemonade!", cupsLemonade);
+            Console.WriteLine("  Your lemonade costs ${0} per glass to make!\n", costs);
             player.setExpenses(costs);
         }
 
@@ -65,25 +66,29 @@ namespace LemonadeStand
         private void buyLemons(int quantity, Player player)
         {
             lemons = lemons + quantity;
-            Console.Write("\rBought {0} lemons!", quantity);
+            Console.Write("\tBought {0} lemons!", quantity);
+            input = Console.ReadLine();
         }
 
         private void buyIce(int quantity, Player player)
         {
             iceCubes = iceCubes + (quantity * 100);
-            Console.Write("B\rought {0} ice cubes!", quantity);
+            Console.Write("\tBought {0} ice cubes!", quantity);
+            input = Console.ReadLine();
         }
 
         private void buySugar(int quantity, Player player)
         {
             this.cupsSugar = this.cupsSugar + quantity;
-            Console.Write("\rBought {0} cups of sugar!", quantity);
+            Console.Write("\tBought {0} cups of sugar!", quantity);
+            input = Console.ReadLine();
         }
 
         private void getWater(int quantity, Player player)
         {
             this.waterLiters = this.waterLiters + quantity;
             Console.Write("\tGot {0} liters from the tap!", quantity);
+            input = Console.ReadLine();
         }
 
         public void pickItem(string input, Player player)
@@ -153,7 +158,7 @@ namespace LemonadeStand
 
         public int PickQuantity(int inPantry, string message)
         {
-            Console.WriteLine("How many {0} would you like?", message);
+            Console.WriteLine("\tHow many {0} would you like?", message);
             int numInput;
             input = Console.ReadLine();
             try
