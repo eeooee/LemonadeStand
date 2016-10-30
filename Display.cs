@@ -260,14 +260,15 @@ namespace LemonadeStand
         public void Done(Player player)
         {
             Console.Clear();
+            string days = ""+ player.days;
             Console.SetWindowSize(61, 30);
             Console.BufferWidth = 61;
             Console.BufferHeight = 30;
             Console.Title = "Lemonade Stand";
             Console.WriteLine("                    ");
             Console.WriteLine("\t{0}.".PadRight(12), player.name);
-            string helper = "║               You sold lemonade for " + player.days+" days.";
-            string helper2 =String.Format("║                   Total Profit: {0:C}", player.money);
+            string helper = "║               You sold lemonade for " + days+" days.";
+            string helper2 =String.Format("║                   Total Profit: {0:C}", player.profit);
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
             Console.Write(helper.PadRight(59));
             Console.WriteLine("║");
@@ -276,6 +277,23 @@ namespace LemonadeStand
             Console.WriteLine("║");
             Console.WriteLine("║                                                          ║");
             Console.WriteLine("╙──────────────────────────────────────────────────────────╜");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("                           Good work.               ");
+
+            Console.WriteLine("");
+            Console.WriteLine("            Ultimately, you served {0} cups of lemonade   ", player.runningCups);
+
+            Console.WriteLine("");
+            Console.WriteLine("       to {0} neighbors.  Your stand was visited {1}   ", player.numberOfCustomers, player.runningVisitors);
+
+            Console.WriteLine("");
+            Console.WriteLine("       times over the "+days+" days you were in business.");
+
+            Console.WriteLine("");
+            Console.WriteLine("       You now have {0:C} in your wallet.", player.money);
+
+
         }
 
         

@@ -20,6 +20,8 @@ namespace LemonadeStand
             display.rules(tycoon);
             days = game.pickDays();
             Day today = new Day(tycoon, days);
+            display.Done(tycoon);
+            Console.ReadLine();
         }
     }
 }

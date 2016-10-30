@@ -20,9 +20,11 @@ namespace LemonadeStand
         static string path ="randomnames.txt";
        public  List<Customer> customers = new List<Customer>();
         string[] names = File.ReadAllLines(path);
-        int numberOfCustomers = 20;
+        public int numberOfCustomers = 20;
         int numInput;
         int cupsSold;
+       public  int runningCups;
+        public int runningVisitors; 
         public int visitors;
         public int days = 0;
         double runningProfit;
@@ -125,6 +127,8 @@ namespace LemonadeStand
             Console.WriteLine("\n\tYou made {0:C} in profit today! \n\tYou've made {1:C} since opening the lemonade stand.\n\n\t\t\tYou now have {2:C}.", profit,runningProfit, money);
             Console.WriteLine("");
             Console.WriteLine("\n\tHit return to continue.  Type save to save.");
+            runningCups = runningCups + cupsSold;
+            runningVisitors = runningVisitors + visitors;
         }
 
         public void morningReview()
