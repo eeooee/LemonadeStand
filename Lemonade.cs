@@ -72,7 +72,7 @@ namespace LemonadeStand
             else if (liters == 0)
             {
                 tasteMultiplier = .001;
-                taste = "Without water you just made an acidity slop. Gross.";
+                taste = "Without water you just made an acidic slop. Gross.";
             }
             //perfect lemonade has an acidity of .5, sweetness of .4, and a coolness of 2.5
             else

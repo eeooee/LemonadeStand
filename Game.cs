@@ -78,5 +78,28 @@ namespace LemonadeStand
                 stream.WriteLine(player.profit);
             }
         }
+
+        public int pickDays()
+        {
+            string input = Console.ReadLine();
+            if (input.Contains("yes")){
+                int days = checkDays();
+                return days;
+
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        public static int checkDays()
+        {
+            int days = -1 ;
+            Console.WriteLine("\t\tHow many days do you want to play for?");
+            string input = Console.ReadLine();
+            int.TryParse(input, out days);
+            return days;
+        }
     }
 }

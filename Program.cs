@@ -12,12 +12,14 @@ namespace LemonadeStand
         static void Main(string[] args)
         {
             Player tycoon;
+            int days;
             Display display = new Display();
             display.StartScreen();
             Game game = new Game();
             tycoon = game.SetUp();
-
-            Day today = new Day(tycoon, 4);
+            display.rules(tycoon);
+            days = game.pickDays();
+            Day today = new Day(tycoon, days);
         }
     }
 }

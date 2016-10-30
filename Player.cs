@@ -24,7 +24,7 @@ namespace LemonadeStand
         int numInput;
         int cupsSold;
         public int visitors;
-        public int days = 1;
+        public int days = 0;
         double runningProfit;
         string randomName;
         string input = " ";
@@ -120,11 +120,11 @@ namespace LemonadeStand
             Console.WriteLine("\n\t\t\t{0}!!", name);
             Console.WriteLine("\t{0} neighbors visited your stand today.", visitors);
             Console.WriteLine("\n\t{0}\n",taste);
-            Console.WriteLine("\tYou sold {0} cups of lemonade for {1:C} each.", pantry.cupsLemonade, drinkCost);
+            Console.WriteLine("\tYou sold {0} cups of lemonade for {1:C} each.", cupsSold, drinkCost);
             Console.WriteLine("\tEach cup cost you {0:C} to make.", expenses);
-            Console.WriteLine("\n\tYou made {0:C} in profit today! \n\tYou've made ${1} since opening the lemonade stand.\n\n\t\t\tYou now have ${2}.", profit,runningProfit, money);
+            Console.WriteLine("\n\tYou made {0:C} in profit today! \n\tYou've made {1:C} since opening the lemonade stand.\n\n\t\t\tYou now have {2:C}.", profit,runningProfit, money);
             Console.WriteLine("");
-            Console.WriteLine("\n\tHit return for another day.  Type save to save.");
+            Console.WriteLine("\n\tHit return to continue.  Type save to save.");
         }
 
         public void morningReview()

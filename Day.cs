@@ -15,7 +15,13 @@ namespace LemonadeStand
         string input;
         public Day(Player player, int days)
         {
+            if (days <= 0)
+            {
+                return;
+            }
+            else { 
             for(int i = 1; i<=days; i++) {
+                player.addDay();
                 //reset the visitor count each day 
                 player.addVisitor(true);
                 weather.Forecast();
@@ -36,14 +42,17 @@ namespace LemonadeStand
                 player.getProfit();
                 display.nightScreen(player, weather);
             player.nightlyOverview();
-                player.addDay();
+
                input = Console.ReadLine();
                 if (input.Contains("save")){
                     Game.saveFile(player);
                    
                 }
             }
+            display.Done(player);
+            Console.ReadLine();
 
+        }
         }
 
         public void VisitsStand(List<Customer> list, Player player, Weather weather)

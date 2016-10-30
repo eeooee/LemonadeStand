@@ -52,6 +52,44 @@ namespace LemonadeStand
 
         }
 
+
+        public void rules(Player player)
+        {
+            Console.Clear();
+            Console.SetWindowSize(61, 30);
+            Console.BufferWidth = 61;
+            Console.BufferHeight = 30;
+            Console.Title = "Lemonade Stand";
+            string helper = "║                      Hey,"+ player.name+"!";
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
+            Console.Write(helper.PadRight(59));
+            Console.WriteLine("║");
+            Console.WriteLine("╟──────────────────────────────────────────────────────────╢");
+            Console.WriteLine("║                                                          ║");
+            Console.WriteLine("║       Selling lemonade can be very profitable....        ║");
+            Console.WriteLine("╙──────────────────────────────────────────────────────────╜");
+            Console.WriteLine("");
+            Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
+            Console.WriteLine("║                                                          ║");
+            Console.WriteLine("║     1. Each day you will wake up, go to the store,       ║");
+            Console.WriteLine("║      prepare your lemonade, then sell it outside.        ║");
+            Console.WriteLine("║     2. Your recipe is important.  The best lemonade      ║");
+            Console.WriteLine("║      is sweet yet acidic, cold, and refreshing.          ║");
+            Console.WriteLine("║     3. Pay attention to the forecast.  Although it's     ║");
+            Console.WriteLine("║      not always right, the weather effects how many      ║");
+            Console.WriteLine("║      people visit your stand and how much they'll pay.   ║");
+            Console.WriteLine("║     4. The price of your lemonade matters.  Try to       ║");
+            Console.WriteLine("║      make as much money as you can.                      ║");
+            Console.WriteLine("║     5.  You choose how many days you'd like to play      ║");
+            Console.WriteLine("║      for.                                                ║");
+            Console.WriteLine("║                                                          ║");
+            Console.WriteLine("╙──────────────────────────────────────────────────────────╜");
+            Console.WriteLine("                   Do you wanna be rich?            ");
+            Console.SetCursorPosition(30, 26);
+        }
+
         public void newDayScreen(Player player, Weather weather)
         {
             string helper = "║    Today, it's supposed to be " + weather.weatherMessage + " and " + weather.temperatureMessage + ".";
@@ -62,8 +100,8 @@ namespace LemonadeStand
             Console.Title = "Lemonade Stand";
             Console.WriteLine("                    ");
 
-            Console.Write("\t{0}.".PadRight(20), player.name);
-            Console.WriteLine("wallet:{0:C}\t$profit:{1}", player.money, player.profit);
+            Console.Write("\t{0}.".PadRight(13), player.name);
+            Console.WriteLine("wallet:{0:C}\tprofit:{1:C}", player.money, player.profit);
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
             Console.WriteLine("║                   WELCOME TO A NEW DAY                   ║");
             Console.WriteLine("╟──────────────────────────────────────────────────────────╢");
@@ -90,7 +128,7 @@ namespace LemonadeStand
             Console.BufferHeight = 30;
             Console.Title = "Lemonade Stand";
             Console.WriteLine("                    ");
-            Console.Write("\t{0}.".PadRight(15), player.name);
+            Console.Write("\t{0}.".PadRight(13), player.name);
             Console.WriteLine("wallet:{0:C}\tprofit:{1:C}", player.money, player.profit);
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
             Console.WriteLine("║                          PRICES                          ║");
@@ -121,7 +159,7 @@ namespace LemonadeStand
             Console.BufferHeight = 30;
             Console.Title = "Lemonade Stand";
             Console.WriteLine("                    ");
-            Console.Write("\t{0}.".PadRight(15), player.name);
+            Console.Write("\t{0}.".PadRight(12), player.name);
             Console.WriteLine("wallet:{0:C}\tprofit:{1:C}", player.money, player.profit);
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
             Console.WriteLine("║                    MAKE SOME LEMONADE                    ║");
@@ -149,7 +187,7 @@ namespace LemonadeStand
             Console.BufferHeight = 30;
             Console.Title = "Lemonade Stand";
             Console.WriteLine("                    ");
-            Console.Write("\t{0}.".PadRight(15), player.name);
+            Console.Write("\t{0}.".PadRight(12), player.name);
             Console.WriteLine("wallet:{0:C}\tprofit:{1:C}", player.money, player.profit);
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
             Console.WriteLine("║                    SELL SOME LEMONADE                    ║");
@@ -164,6 +202,8 @@ namespace LemonadeStand
 
         }
 
+
+
         public void endOfDay(Player player)
         {
 
@@ -175,7 +215,7 @@ namespace LemonadeStand
             Console.Title = "Lemonade Stand";
             Console.WriteLine("                    ");
 
-            Console.Write("\t{0}.".PadRight(15), player.name);
+            Console.Write("\t{0}.".PadRight(12), player.name);
             Console.WriteLine("wallet:{0:C}\tprofit:{1:C}", player.money, player.profit);
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
             Console.WriteLine("║                IT'S THE END OF THE DAY                   ║");
@@ -200,7 +240,7 @@ namespace LemonadeStand
             Console.BufferHeight = 30;
             Console.Title = "Lemonade Stand";
             Console.WriteLine("                    ");
-            Console.Write("\t{0}.".PadRight(15), player.name);
+            Console.Write("\t{0}.".PadRight(12), player.name);
             Console.WriteLine("wallet:{0:C}\tprofit:{1:C}", player.money, player.profit);
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
             Console.WriteLine("║                   IT'S BEEN A LONG DAY                   ║");
@@ -215,6 +255,41 @@ namespace LemonadeStand
             Console.Write("Night {0}.", player.days);
             Console.SetCursorPosition(7, 10);
 
+        }
+
+        public void Done(Player player)
+        {
+            Console.Clear();
+            Console.SetWindowSize(61, 30);
+            Console.BufferWidth = 61;
+            Console.BufferHeight = 30;
+            Console.Title = "Lemonade Stand";
+            Console.WriteLine("                    ");
+            Console.WriteLine("\t{0}.".PadRight(12), player.name);
+            string helper = "║               You sold lemonade for " + player.days+" days.";
+            string helper2 =String.Format("║                   Total Profit: {0:C}", player.money);
+            Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
+            Console.Write(helper.PadRight(59));
+            Console.WriteLine("║");
+            Console.WriteLine("╟──────────────────────────────────────────────────────────╢");
+            Console.Write(helper2.PadRight(59));
+            Console.WriteLine("║");
+            Console.WriteLine("║                                                          ║");
+            Console.WriteLine("╙──────────────────────────────────────────────────────────╜");
+        }
+
+        
+        public void GameOver(Player player)
+        {
+            string helper = "GAME OVER";
+            Console.WriteLine("                    ");
+            Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
+            Console.Write(helper.PadRight(59));
+            Console.WriteLine("║");
+            Console.WriteLine("╟──────────────────────────────────────────────────────────╢");
+            Console.WriteLine("║                    OOPS, YOU'RE BROKE.                   ║");
+            Console.WriteLine("║                                                          ║");
+            Console.WriteLine("╙──────────────────────────────────────────────────────────╜");
         }
 
         //clears a certain amount of lines, then resets the cursor to a height passed to it 

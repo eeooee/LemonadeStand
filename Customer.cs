@@ -81,7 +81,7 @@ namespace LemonadeStand
             }
             else
             {
-                Console.WriteLine("\t{0} didn't find your lemonade appetizing today.\nTry tweaking the recipe!", this.name);
+                Console.WriteLine("\t{0} thought your lemonade was too gross to buy.", this.name);
                 cupsSkipped++;
                 return false;
             }
