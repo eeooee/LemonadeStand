@@ -13,7 +13,6 @@ namespace LemonadeStand
         public double tasteMultiplier;
 
         public double acidity;
-        public double waterRatio;
         public double sweetness;
         public double coolness;
         double costs;
@@ -79,7 +78,7 @@ namespace LemonadeStand
             {
                 double cups = liters * cupsPerLiter;
                 acidity = lemons / cups;
-                sweetness = sugar /cups;
+                sweetness = sugar / cups;
                 coolness = ice / cups;
                 setTasteMultiplier(acidity, sweetness, coolness);
             }
@@ -97,20 +96,21 @@ namespace LemonadeStand
                 tasteMultiplier = .5;
                 taste = "This is lemonade.  \n\tYou have to respect the primary ingredient.";
             }
-           else if (sweet < .10 || sweet > 1)
+            else if (sweet < .10 || sweet > 1)
             {
                 tasteMultiplier = .5;
                 taste = "Something was off.  Too much sugar or not enough?";
             }
-           else if (coolness < 2.5)
+            else if (coolness < 2.5)
             {
                 tasteMultiplier = .8;
-                    taste = "No one likes warm lemonade.  Try some ice next time.";
+                taste = "No one likes warm lemonade.  Try some ice next time.";
             }
-            else {
+            else
+            {
                 tasteMultiplier = 1;
-                    taste = "You made some delightful lemonade.";
-                }
+                taste = "You made some delightful lemonade.";
+            }
         }
 
 

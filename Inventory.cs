@@ -26,11 +26,9 @@ namespace LemonadeStand
 
         public int cupsLemonade;
         public int cupsMade;
-        int cupsPerLiter = 8;
         string input;
         int selection;
-        public double costs;
-       public Lemonade lemonade = new Lemonade();
+        public Lemonade lemonade = new Lemonade();
 
         public Inventory()
         {
@@ -39,7 +37,7 @@ namespace LemonadeStand
             iceCubes = 100;
             waterLiters = 2;
         }
-        
+
         private void buyLemons(int quantity, Player player)
         {
             lemons = lemons + quantity;
@@ -50,7 +48,7 @@ namespace LemonadeStand
         private void buyIce(int quantity, Player player)
         {
             iceCubes = iceCubes + (quantity * 100);
-            Console.Write("\tBought {0} ice cubes!", quantity);
+            Console.Write("\tBought {0} bags of ice!", quantity);
             input = Console.ReadLine();
         }
 
@@ -119,9 +117,9 @@ namespace LemonadeStand
             catch (Exception e)
             {
                 Console.WriteLine("\tYou entered {0}.  Please try again", input);
-               return HowMany(player, price);
+                return HowMany(player, price);
             }
-            
+
         }
 
         private void checkQuantities(int inPantry, int requested)

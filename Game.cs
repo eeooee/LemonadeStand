@@ -9,25 +9,25 @@ namespace LemonadeStand
 {
     class Game
     {
-
-        string input = Console.ReadLine();
+        string input;
         string path = @"";
         public string loadedName = "";
-        public double wallet ;
-       public double profit;
+        public double wallet;
+        public double profit;
+        Display display = new Display();
 
         public Player SetUp()
         {
-                
-                if (input.ToLower().Contains("continue"))
-           { 
+            input = Console.ReadLine();
+            if (input.ToLower().Contains("continue"))
+            {
                 readFile();
                 Console.WriteLine("Welcome back {0}.  You currently have ${1}, and you've made {2} total.", loadedName, wallet, profit);
                 Console.ReadLine();
-               
 
-        return new Player(loadedName, wallet, profit);
-                
+
+                return new Player(loadedName, wallet, profit);
+
             }
             else
             {
@@ -37,6 +37,13 @@ namespace LemonadeStand
             }
         }
 
+        public void Start(Player tycoon)
+        {
+            display.rules(tycoon);
+            int days = pickDays();
+            Time today = new Time(tycoon, days);
+        }
+
         private void LoadGame(string path)
         {
             using (StreamReader stream = new StreamReader(path))
@@ -44,9 +51,9 @@ namespace LemonadeStand
                 string s = "";
                 while ((s = stream.ReadLine()) != null)
                 {
-                        loadedName = s;
-                        wallet = Double.Parse(stream.ReadLine());
-                        profit = Double.Parse(stream.ReadLine());
+                    loadedName = s;
+                    wallet = Double.Parse(stream.ReadLine());
+                    profit = Double.Parse(stream.ReadLine());
                 }
             }
         }
@@ -54,7 +61,7 @@ namespace LemonadeStand
         private void readFile()
         {
 
-            Console.WriteLine("Enter the name of the file to read");
+            Console.WriteLine("Enter the name of your save file.  It's your player's name.");
             path = Console.ReadLine();
             if (File.Exists(path))
             {
@@ -71,7 +78,7 @@ namespace LemonadeStand
         {
             string fileName = player.name;
             //creates a new save file named after the player.  false operand ensures that if the file xists already that it is written over 
-            using(StreamWriter stream = new StreamWriter(fileName,false))
+            using (StreamWriter stream = new StreamWriter(fileName, false))
             {
                 stream.WriteLine(player.name);
                 stream.WriteLine(player.money);
@@ -82,7 +89,8 @@ namespace LemonadeStand
         public int pickDays()
         {
             string input = Console.ReadLine();
-            if (input.Contains("yes")){
+            if (input.Contains("yes"))
+            {
                 int days = checkDays();
                 return days;
 
@@ -95,8 +103,8 @@ namespace LemonadeStand
 
         public static int checkDays()
         {
-            int days = -1 ;
-            Console.WriteLine("\t\tHow many days do you want to play for?");
+            int days = -1;
+            Console.WriteLine("\tHow many days do you want to play for?");
             string input = Console.ReadLine();
             int.TryParse(input, out days);
             return days;

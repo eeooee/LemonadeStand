@@ -11,16 +11,13 @@ namespace LemonadeStand
     {
         static void Main(string[] args)
         {
-            Player tycoon;
-            int days;
+            Player player;
+            Game LemonadeStand = new Game();
             Display display = new Display();
             display.StartScreen();
-            Game game = new Game();
-            tycoon = game.SetUp();
-            display.rules(tycoon);
-            days = game.pickDays();
-            Day today = new Day(tycoon, days);
-            display.Done(tycoon);
+            player = LemonadeStand.SetUp();
+            LemonadeStand.Start(player);
+            display.Done(player);
             Console.ReadLine();
         }
     }

@@ -60,7 +60,7 @@ namespace LemonadeStand
             Console.BufferWidth = 61;
             Console.BufferHeight = 30;
             Console.Title = "Lemonade Stand";
-            string helper = "║                      Hey,"+ player.name+"!";
+            string helper = "║                      Hey," + player.name + "!";
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
@@ -87,7 +87,7 @@ namespace LemonadeStand
             Console.WriteLine("║                                                          ║");
             Console.WriteLine("╙──────────────────────────────────────────────────────────╜");
             Console.WriteLine("                   Do you wanna be rich?            ");
-            Console.SetCursorPosition(30, 26);
+            Console.SetCursorPosition(0, 26);
         }
 
         public void newDayScreen(Player player, Weather weather)
@@ -100,8 +100,8 @@ namespace LemonadeStand
             Console.Title = "Lemonade Stand";
             Console.WriteLine("                    ");
 
-            Console.Write("\t{0}.".PadRight(13), player.name);
-            Console.WriteLine("wallet:{0:C}\tprofit:{1:C}", player.money, player.profit);
+            Console.Write("\t{0}.".PadRight(9), player.name);
+            Console.WriteLine("wallet:{0:C}\tprofit:${1:0.00}", player.money, player.profit);
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
             Console.WriteLine("║                   WELCOME TO A NEW DAY                   ║");
             Console.WriteLine("╟──────────────────────────────────────────────────────────╢");
@@ -128,8 +128,8 @@ namespace LemonadeStand
             Console.BufferHeight = 30;
             Console.Title = "Lemonade Stand";
             Console.WriteLine("                    ");
-            Console.Write("\t{0}.".PadRight(13), player.name);
-            Console.WriteLine("wallet:{0:C}\tprofit:{1:C}", player.money, player.profit);
+            Console.Write("\t{0}.".PadRight(9), player.name);
+            Console.WriteLine("wallet:{0:C}\tprofit:${1:0.00}", player.money, player.profit);
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
             Console.WriteLine("║                          PRICES                          ║");
             Console.WriteLine("╟──────────────────────────────────────────────────────────╢");
@@ -159,8 +159,8 @@ namespace LemonadeStand
             Console.BufferHeight = 30;
             Console.Title = "Lemonade Stand";
             Console.WriteLine("                    ");
-            Console.Write("\t{0}.".PadRight(12), player.name);
-            Console.WriteLine("wallet:{0:C}\tprofit:{1:C}", player.money, player.profit);
+            Console.Write("\t{0}.".PadRight(9), player.name);
+            Console.WriteLine("wallet:{0:C}\tprofit:${1:0.00}", player.money, player.profit);
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
             Console.WriteLine("║                    MAKE SOME LEMONADE                    ║");
             Console.WriteLine("╟──────────────────────────────────────────────────────────╢");
@@ -187,8 +187,8 @@ namespace LemonadeStand
             Console.BufferHeight = 30;
             Console.Title = "Lemonade Stand";
             Console.WriteLine("                    ");
-            Console.Write("\t{0}.".PadRight(12), player.name);
-            Console.WriteLine("wallet:{0:C}\tprofit:{1:C}", player.money, player.profit);
+            Console.Write("\t{0}.".PadRight(9), player.name);
+            Console.WriteLine("wallet:{0:C}\tprofit:${1:0.00}", player.money, player.profit);
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
             Console.WriteLine("║                    SELL SOME LEMONADE                    ║");
             Console.WriteLine("╟──────────────────────────────────────────────────────────╢");
@@ -204,32 +204,8 @@ namespace LemonadeStand
 
 
 
-        public void endOfDay(Player player)
-        {
-
-            string helper = " ";
-            Console.Clear();
-            Console.SetWindowSize(61, 30);
-            Console.BufferWidth = 61;
-            Console.BufferHeight = 30;
-            Console.Title = "Lemonade Stand";
-            Console.WriteLine("                    ");
-
-            Console.Write("\t{0}.".PadRight(12), player.name);
-            Console.WriteLine("wallet:{0:C}\tprofit:{1:C}", player.money, player.profit);
-            Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
-            Console.WriteLine("║                IT'S THE END OF THE DAY                   ║");
-            Console.WriteLine("╟──────────────────────────────────────────────────────────╢");
-            Console.WriteLine("║                                                          ║");
-            Console.Write(helper.PadRight(59));
-            Console.WriteLine("║");
-
-
-            Console.WriteLine("╙──────────────────────────────────────────────────────────╜");
-            Console.SetCursorPosition(7, 10);
-        }
-
         
+
 
         public void nightScreen(Player player, Weather weather)
         {
@@ -240,8 +216,8 @@ namespace LemonadeStand
             Console.BufferHeight = 30;
             Console.Title = "Lemonade Stand";
             Console.WriteLine("                    ");
-            Console.Write("\t{0}.".PadRight(12), player.name);
-            Console.WriteLine("wallet:{0:C}\tprofit:{1:C}", player.money, player.profit);
+            Console.Write("\t{0}.".PadRight(9), player.name);
+            Console.WriteLine("wallet:{0:C}\tprofit:${1:0.00}", player.money, player.profit);
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
             Console.WriteLine("║                   IT'S BEEN A LONG DAY                   ║");
             Console.WriteLine("╟──────────────────────────────────────────────────────────╢");
@@ -260,15 +236,15 @@ namespace LemonadeStand
         public void Done(Player player)
         {
             Console.Clear();
-            string days = ""+ player.days;
+            string days = "" + player.days;
             Console.SetWindowSize(61, 30);
             Console.BufferWidth = 61;
             Console.BufferHeight = 30;
             Console.Title = "Lemonade Stand";
             Console.WriteLine("                    ");
-            Console.WriteLine("\t{0}.".PadRight(12), player.name);
-            string helper = "║               You sold lemonade for " + days+" days.";
-            string helper2 =String.Format("║                   Total Profit: {0:C}", player.profit);
+            Console.WriteLine("\t{0}.".PadRight(9), player.name);
+            string helper = "║               You sold lemonade for " + days + " days.";
+            string helper2 = String.Format("║                   Total Profit: ${0:0.00}", player.profit);
             Console.WriteLine("╓──────────────────────────────────────────────────────────╖");
             Console.Write(helper.PadRight(59));
             Console.WriteLine("║");
@@ -288,7 +264,7 @@ namespace LemonadeStand
             Console.WriteLine("       to {0} neighbors.  Your stand was visited {1}   ", player.numberOfCustomers, player.runningVisitors);
 
             Console.WriteLine("");
-            Console.WriteLine("       times over the "+days+" days you were in business.");
+            Console.WriteLine("       times over the " + days + " days you were in business.");
 
             Console.WriteLine("");
             Console.WriteLine("       You now have {0:C} in your wallet.", player.money);
@@ -296,7 +272,7 @@ namespace LemonadeStand
 
         }
 
-        
+
         public void GameOver(Player player)
         {
             string helper = "GAME OVER";
@@ -327,10 +303,10 @@ namespace LemonadeStand
             Console.SetCursorPosition(0, 0);
             Console.WriteLine("                    ");
             Console.Write("\t{0}.".PadRight(15), player.name);
-            Console.WriteLine("wallet:{0:C}\tprofit:{1:C}", player.money, player.profit);
-            Console.SetCursorPosition(0,15);
+            Console.WriteLine("wallet:{0:C}\tprofit:${1:0.00}", player.money, player.profit);
+            Console.SetCursorPosition(0, 15);
         }
     }
 }
-    
+
 
