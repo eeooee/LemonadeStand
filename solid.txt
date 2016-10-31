@@ -1,0 +1,3 @@
+In my Lemonade Stand game, I used the Single Responsibility principal particularly in creating my display class.  Instead of trying to print the display in each method for shopping, making lemonade, etc, I just made a class with a few base display types.  This class only deals with the display, having several methods for writing certain layouts to the screen, and a method for clearing lines selectively.  It serves only one purpose.
+
+Throughout the rest of the project, I tried to keep methods short by creating more short methods and calling them as needed.  I made methods for reading input and used them instead of writing code to capture input every time it was needed.   

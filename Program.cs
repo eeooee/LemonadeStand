@@ -14,11 +14,11 @@ namespace LemonadeStand
             Player player;
             Game LemonadeStand = new Game();
             Display display = new Display();
+
             display.StartScreen();
             player = LemonadeStand.SetUp();
             LemonadeStand.Start(player);
             display.Done(player);
-            Console.ReadLine();
         }
     }
 }

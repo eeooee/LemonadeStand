@@ -14,23 +14,10 @@ namespace LemonadeStand
         Weather weather = new Weather();
         Display display = new Display();
         string input;
-        public Time(Player player, int days)
-        {
-            if (days <= 0)
-            {
-                return;
-            }
-            else
-            {
-                Days(player, days);
-                display.Done(player);
-                Console.ReadLine();
-
-            }
-        }
+     
 
 
-        public void Days(Player player, int days)
+        public void PlayForDays(Player player, int days)
         {
             for (int i = 1; i <= days; i++)
             {

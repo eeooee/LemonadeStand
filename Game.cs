@@ -15,6 +15,7 @@ namespace LemonadeStand
         public double wallet;
         public double profit;
         Display display = new Display();
+        Time time = new Time();
 
         public Player SetUp()
         {
@@ -37,11 +38,26 @@ namespace LemonadeStand
             }
         }
 
-        public void Start(Player tycoon)
+        public void Start(Player player)
         {
-            display.rules(tycoon);
+            display.rules(player);
             int days = pickDays();
-            Time today = new Time(tycoon, days);
+            CheckDays(player, days);
+        }
+
+        public void CheckDays(Player player, int days)
+        {
+            if (days <= 0)
+            {
+                return;
+            }
+            else
+            {
+                time.PlayForDays(player, days);
+                display.Done(player);
+                Console.ReadLine();
+
+            }
         }
 
         private void LoadGame(string path)

@@ -268,6 +268,7 @@ namespace LemonadeStand
 
             Console.WriteLine("");
             Console.WriteLine("       You now have {0:C} in your wallet.", player.money);
+            Console.ReadLine();
 
 
         }
